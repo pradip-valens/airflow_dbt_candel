@@ -1,9 +1,9 @@
-name: "nyc_taxi_green"
+name: "vibe_ops_fabric_wh_pr"
 
 config-version: 2
 version: "0.1"
 
-profile: "nyc_taxi_green"
+profile: "vibe_ops_fabric_wh_pr"
 
 model-paths: ["models"]
 seed-paths: ["seeds"]
@@ -20,5 +20,13 @@ clean-targets:
 require-dbt-version: [">=1.0.0", "<2.0.0"]
 
 models:
-  nyc_taxi_green:
-    materialized: table
+  vibe_ops_fabric_wh_pr:
+    brz:
+      schema: brz_jira_sm
+      materialized: table
+    slv:
+      schema: slv_jira_sm
+      materialized: table
+    gold:
+      schema: gold_jira_sm
+      materialized: table

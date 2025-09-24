@@ -1,14 +1,14 @@
 config:
   partial_parse: true
-nyc_taxi_green:
+vibe_ops_fabric_wh_pr:
   target: fabric-dev
   outputs:
     fabric-dev:
       type: fabric
       driver: "ODBC Driver 18 for SQL Server"
-      server: "{{ env_var('FABRIC_WAREHOUSE_CONNECTION') }}"
+      server: "{{ env_var('FABRIC_WAREHOUSE_URL') }}"
       port: 1433
-      database: "taxi"
+      database: "airbytes_wh"
       schema: dbo
       threads: 4
       authentication: ServicePrincipal

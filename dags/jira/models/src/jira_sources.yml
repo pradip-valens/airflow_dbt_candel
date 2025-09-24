@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: landing_jira_sm
+    schema: landing_jira_sm
+    tables:
+      - name: raw_issues
+      - name: raw_projects
+      - name: raw_users
+      - name: raw_issue_fields

@@ -1,0 +1,45 @@
+-- models/bronze/brz_projects.sql
+{{ config(
+    materialized='table'
+) }}
+
+SELECT
+    _airbyte_raw_id,
+    _airbyte_extracted_at,
+    _airbyte_meta,
+    _airbyte_generation_id,
+    CAST(id as VARCHAR(50)) as project_id,
+    CAST([key] as VARCHAR(100)) as project_key,
+    CAST(url as VARCHAR(500)) as project_url,
+    CAST(lead as VARCHAR(8000)) as lead_json,
+    CAST([name] as VARCHAR(255)) as project_name,
+    CAST([self] as VARCHAR(500)) as self_url,
+    CAST(uuid as VARCHAR(100)) as project_uuid,
+    CAST(email as VARCHAR(255)) as project_email,
+    CAST(roles as VARCHAR(8000)) as roles_json,
+    CAST(style as VARCHAR(100)) as project_style,
+    CAST(expand as VARCHAR(8000)) as expand,
+    CAST(deleted as BIT) as is_deleted,
+    CAST(insight as VARCHAR(8000)) as insight_json,
+    CAST(archived as BIT) as is_archived,
+    CAST(entityId as VARCHAR(100)) as entity_id,
+    CAST(versions as VARCHAR(8000)) as versions_json,
+    CAST(deletedBy as VARCHAR(8000)) as deleted_by_json,
+    CAST(favourite as BIT) as is_favourite,
+    CAST(isPrivate as BIT) as is_private,
+    CAST(archivedBy as VARCHAR(8000)) as archived_by_json,
+    CAST(avatarUrls as VARCHAR(8000)) as avatar_urls_json,
+    CAST(components as VARCHAR(8000)) as components_json,
+    CAST(issueTypes as VARCHAR(8000)) as issue_types_json,
+    CAST(properties as VARCHAR(8000)) as properties_json,
+    CAST(simplified as BIT) as is_simplified,
+    CAST(deletedDate as DATETIME2(6)) as deleted_date,
+    CAST(description as VARCHAR(8000)) as project_description,
+    CAST(permissions as VARCHAR(8000)) as permissions_json,
+    CAST(archivedDate as DATETIME2(6)) as archived_date,
+    CAST(assigneeType as VARCHAR(100)) as assignee_type,
+    CAST(projectTypeKey as VARCHAR(100)) as project_type_key,
+    CAST(projectCategory as VARCHAR(8000)) as project_category_json,
+    CAST(retentionTillDate as DATETIME2(6)) as retention_till_date,
+    CAST(issueTypeHierarchy as VARCHAR(8000)) as issue_type_hierarchy_json
+FROM {{ source('landing_jira_sm', 'raw_projects') }}
