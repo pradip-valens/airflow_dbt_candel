@@ -4,7 +4,7 @@ from datetime import datetime
 from cosmos import DbtDag, ProjectConfig, ProfileConfig, ExecutionConfig
 from airflow import DAG
 
-DEFAULT_DBT_ROOT_PATH = Path(__file__).parent.parent / "dags" / "dbt_project"
+DEFAULT_DBT_ROOT_PATH = Path(__file__).parent.parent / "dags" / "jira"
 DBT_ROOT_PATH = Path(os.getenv("DBT_ROOT_PATH", DEFAULT_DBT_ROOT_PATH))
 profile_config = ProfileConfig(
     profile_name="vibe_ops_fabric_wh_pr",
